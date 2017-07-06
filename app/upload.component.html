@@ -1,0 +1,120 @@
+<h1>Upload</h1>
+<hr width="100%">
+<div *ngIf="isLoading">
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
+</div>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.form)">
+    <div>
+        <label for="dept">Dapartment Code:   </label>
+            <select>
+                <option>AE</option>
+                <option>CE</option>
+                <option>CHE</option>
+                <option>CS</option>
+                <option>DES</option>
+                <option>ECO</option>
+                <option>EEE</option>
+                <option>EM</option>
+                <option>ENG</option>
+                <option>ES</option>
+                <option>ESC</option>
+                <option>ESO</option>
+                <option>IME</option>
+                <option>LIF</option>
+                <option>LT</option>
+                <option>MBA</option>
+                <option>ME</option>
+                <option>MSE</option>
+                <option>MSO</option>
+                <option>MTH</option>
+                <option>NT</option>
+                <option>PHI</option>
+                <option>PHY</option>
+                <option>PSY</option>
+                <option>SE</option>
+                <option>SOC</option>
+                <option>TA</option>
+            </select>
+    </div><br>
+    <div class="form-group">
+         <label for="code">Course Code</label>            
+         <input 
+            ngControl="code" 
+            #code="ngForm"
+            id="code" 
+            type="text" 
+            class="form-control"
+            placeholder="103" 
+            required>
+         <div *ngIf="code.touched && code.errors">
+         <div 
+            class="alert alert-danger" 
+            *ngIf="code.errors.required">
+            Course Code is required.
+         </div>
+         </div>
+    </div><br>
+    <div class="form-group">
+         <label for="prof">Proffessor Name</label>            
+         <input 
+            ngControl="prof" 
+            #prof="ngForm"
+            id="prof" 
+            type="text" 
+            class="form-control">
+            <div *ngIf="prof.touched && prof.errors">
+            <div 
+                class="alert alert-danger" 
+                *ngIf="prof.errors.required">
+                Proffessor Code is required.
+            </div>
+        </div>
+    </div><br>
+    <div class="form-group">
+         <label for="yr">Academic Year</label>            
+         <input 
+            ngControl="yr" 
+            #yr="ngForm"
+            id="yr" 
+            type="text" 
+            class="form-control"
+            placeholder="2016-2017" 
+            required>
+         <div *ngIf="yr.touched && yr.errors">
+         <div 
+            class="alert alert-danger" 
+            *ngIf="yr.errors.required">
+            Academic Year is required.
+         </div>
+         </div>
+    </div><br>
+    <div>
+        <label for="sem">Semester:   </label>
+            <select>
+                <option>I</option>
+                <option>II</option>
+                <option>Summer Semester</option>
+            </select>
+    </div><br>
+    <div class="form-group">
+        <label for="des">Description</label>
+        <textarea 
+            #des="ngForm" 
+            ngControl="des" 
+            id="des" 
+            cols="30" 
+            rows="10" 
+            class="form-control"
+            placeholder="About the file"
+            required>
+        </textarea>
+        <div 
+            *ngIf="des.touched && !des.valid" 
+            class="alert alert-danger">
+            Description is required.
+        </div>
+    </div><br>
+    <input type="file" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">    
+    <br>
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Upload</button> 
+</form>
